@@ -1,3 +1,61 @@
+Version 2.7.6
+---------------------------
+- improved renderer responsiveness while recursive search #315
+- added custom request params to the "downloadItem" action #318
+- enhanced .Net Core Framework connector #316 #319
+- added capability to set custom client configuration file path #329
+- prevented caching language files #332
+- updated PHP connector dependency to v1.2.6
+(https://github.com/servocoder/RichFilemanager-PHP/releases/tag/v1.2.6)
+
+
+Version 2.7.5
+---------------------------
+- bugfix: server-side errors haven't shown on upload #305
+- datetime types received from server extended to: seconds, milliseconds and datetime string #308
+- updated PHP connector dependency to v1.2.4
+(https://github.com/servocoder/RichFilemanager-PHP/releases/tag/v1.2.4)
+
+
+Version 2.7.4
+---------------------------
+- fixed CodeMirror lib missed file #301
+- updated CodeMirror package to v5.35.0
+- updated PHP connector dependency to v1.2.3
+(https://github.com/servocoder/RichFilemanager-PHP/releases/tag/v1.2.3)
+
+
+Version 2.7.3
+---------------------------
+- hotfix
+
+
+Version 2.7.2
+---------------------------
+- added optional connector "options.capabilities" in the initiate action #272
+- avoid loading right panel folder contents when unfolding tree if click on +(plus) icon #293
+- included resourceObject to "selectItem" callback #294
+- minified and combined assets with new grunt config #295
+- implemented customizable upload parameter name #297
+- updated russian translations (minor fixes) #292
+- updated dutch translations
+- updated PHP connector dependency to v1.2.2
+(https://github.com/servocoder/RichFilemanager-PHP/releases/tag/v1.2.2)
+
+Backward incompatible changes:
+- restructure and refactor source package files and third-party libs
+
+
+Version 2.7.1
+---------------------------
+- implemented RFM plugin public methods "refreshFolder" and "loadFolder" #275
+- bugfix: problem with folder downloading #273
+- bigfix: redirect on failed authentication doesn't work #278
+- bugfix: fileroot issue with symbolic links #285
+- updated PHP connector dependency to v1.2.1
+(https://github.com/servocoder/RichFilemanager-PHP/releases/tag/v1.2.1)
+
+
 Version 2.7.0
 ---------------------------
 - server-side search implemented, relative to the open folder #271

@@ -9,19 +9,22 @@ from mimetypes import MimeTypes
 from zipfile import ZipFile
 from flask import request, jsonify, send_file
 from werkzeug.utils import secure_filename
-from .FileManagerResponse import *
+from FileManagerResponse import *
 from flask import current_app as app
-
+import subprocess
+TARGETPATH = str(subprocess.Popen('for OPTS in $(ps ax | grep '+str(os.getpid())+');do echo $OPTS | grep -q  "\-\-targetpath=" && echo $OPTS | cut -d = -f 2;done', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0].decode('utf8').replace('\n', ''))
 
 
 
 class FileManager:
     # Path to your files root
-    root = os.path.join(os.path.dirname(os.path.abspath(__file__)),'files')
+#    root = os.path.join(os.path.dirname(os.path.abspath(__file__)),TARGETPATH)
+    root = TARGETPATH
     def fileManagerError(self,title='FORBIDDEN_CHAR_SLASH',path='/'):
        return self.error(title,path)
-    def is_safe_path(self,path, follow_symlinks=True):
+    def is_safe_path(self,path, follow_symlinks=False):
        basedir = self.root
+#       basedir = ''
        # resolves symbolic links
        if follow_symlinks:
            return os.path.realpath(path).startswith(basedir)
@@ -35,9 +38,10 @@ class FileManager:
         extensions                      = {}
         extensions['ignoreCase']        = True
         extensions['policy']            = "DISALLOW_LIST"
+        extensions['policy']            = ""
         extensions['restrictions']      = []
         security                        = {}
-        security['allowFolderDownload'] = True;
+        security['allowFolderDownload'] = True
         security['readOnly']            = False
         security['extensions']          = extensions;
         config                          = {}
@@ -75,10 +79,13 @@ class FileManager:
         if (self.is_safe_path(folder_path)):
            try:
                for file in os.listdir(folder_path):
+                 try:
                    path        = os.path.join(folder_path,file)
                    response    = FileManagerResponse(path)
                    response.set_data()
                    data.append(response.data)
+                 except:
+                   pass
                results         = {}
                results['data'] = data
                return jsonify(results)

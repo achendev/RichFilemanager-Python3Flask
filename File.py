@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from flask import Blueprint, request, render_template, make_response
-from .FileManager import FileManager
+from FileManager import FileManager
 
 bluePrint = Blueprint('fileBluePrint', __name__, url_prefix='/files',template_folder='templates')
 

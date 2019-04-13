@@ -2,8 +2,8 @@
     "_comment": "IMPORTANT : go to the wiki page to know about options configuration https://github.com/servocoder/RichFilemanager/wiki/Configuration-options",
     "options": {
         "culture": "en",
-        "theme": "flat-dark",
-        "defaultViewMode": "grid",
+        "theme": "flat-light",
+        "defaultViewMode": "list",
         "localizeGUI": true,
         "showFullPath": false,
         "showTitleAttr": false,
@@ -136,7 +136,8 @@
                 "csv",
                 "xml",
                 "cnf",
-                "cfg"
+                "cfg",
+                ""
             ]
         },
         "markdownRenderer": {
@@ -158,7 +159,8 @@
                 "md",
                 "xml",
                 "cnf",
-                "cfg"
+                "cfg",
+                "conf"
             ]
         }
     },

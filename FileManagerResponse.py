@@ -3,10 +3,13 @@ import os
 import re
 import datetime
 from PIL import Image
+import subprocess
+TARGETPATH = str(subprocess.Popen('for OPTS in $(ps ax | grep '+str(os.getpid())+');do echo $OPTS | grep -q  "\-\-targetpath=" && echo $OPTS | cut -d = -f 2;done', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0].decode('utf8').replace('\n', ''))
 
 class FileManagerResponse(object):
     # absolute path to base folder
-    root = os.path.join(os.path.dirname(os.path.abspath(__file__)),'files')
+#    root = os.path.join(os.path.dirname(os.path.abspath(__file__)),'files')
+    root = TARGETPATH
     def __init__(self,path):
         ''' Init '''
         self.path          = path # absolute path to file or folder
